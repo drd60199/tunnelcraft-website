@@ -1,0 +1,219 @@
+/* Overall Styling */
+body {
+    font-family: 'Arial', sans-serif; /* Choose your preferred font */
+    background-color: #333333; /* Dark grey background */
+    color: #ffffff; /* White text color */
+    margin: 0; /* Reset default margin */
+}.container {
+    max-width: 960px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: #00ff01; /* Electric blue links */
+    text-decoration: none;
+}
+
+a:hover {
+    color: #00ff00; /* Lime green on hover */
+}
+
+/* Header Styling */
+header {
+    background-color: #222222; /* Slightly darker grey for header */
+    padding: 20px 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00ff01; /* Electric blue logo */
+}
+
+/* Updated CSS for navigation links */
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center; /* Aligns all list items vertically */
+    gap: 30px;
+    justify-content: center;
+    flex-grow: 1;;
+    
+}
+
+.nav-links li {
+    margin-left: 0;
+}
+
+.nav-links a {
+    color: #00ff01;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #00ffff;
+}
+/* New CSS for mobile login links */
+@media (max-width: 768px) {
+    header nav {
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block; /* Show the button on small screens */
+        margin-left: auto; /* Aligns the button to the right */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .nav-links.active {
+        max-height: 500px; /* Adjust as needed */
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    /* New rules for the login links */
+    .login-links, .user-info {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+}
+
+
+/* About Us Styling */.about-us {
+    background-color: #333333; /* Match the overall background */
+    padding: 50px 0;
+    text-align: center;
+}.about-us h2 {
+    color: #00ff01; /* Electric blue heading */
+    margin-bottom: 20px;
+}.about-us p {
+    color: #ffffff; /* White text color */
+}.about-us a {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #00ff01; /* Electric blue border */
+    color: #00ff01; /* Electric blue text */
+    transition: background-color 0.3s, color 0.3s;
+}.about-us a:hover {
+    background-color: #00ffff; /* Lime green background on hover */
+    color: #333333; /* Dark grey text on hover */
+}
+
+/* Call to Action Styling */.call-to-action {
+    background-color: #222222; /* Slightly darker grey */
+    padding: 30px 0;
+    text-align: center;
+}.call-to-action a {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #00ff01; /* Electric blue border */
+    color: #00ff01; /* Electric blue text */
+    transition: background-color 0.3s, color 0.3s;
+}.call-to-action a:hover {
+    background-color: #00ffff; /* Lime green background on hover */
+    color: #333333; /* Dark grey text on hover */
+}
+
+/* Footer Styling */
+footer {
+    background-color: #222222; /* Slightly darker grey */
+    padding: 20px 0;
+    text-align: center;
+}
+
+footer p {
+    color: #ffffff; /* White text color */
+    margin-bottom: 10px;
+}.social-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}.social-links li {
+    margin: 0 10px;
+}
+.online {
+    color: green;
+    font-weight: bold;
+}
+
+.offline {
+    color: red;
+    font-weight: bold;
+}
+
+.error {
+    color: orange;
+    font-weight: bold;
+}
+
+/* New Responsive Navbar Styles */
+.menu-toggle {
+    display: none; /* Hide the button by default */
+    background: none;
+    border: none;
+    color: #00ff01;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    header nav {
+        flex-wrap: wrap;
+    }
+
+    .menu-toggle {
+        display: block; /* Show the button on small screens */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .nav-links.active {
+        max-height: 500px; /* Adjust as needed */
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .login-links {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .user-info {
+        margin-top: 10px;
+        width: 100%;
+        text-align: center;
+    }
+}
