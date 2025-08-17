@@ -178,10 +178,11 @@ session_start(); // Start the session?>
 
 <footer>
     <div class="container">
-        <p>&copy; 2025 Your Server Hosting</p>
+        <p>&copy; 2025 TunnelCraft</p>
         <ul class="social-links">
-            <li><a href="#"><img src="social-icon1.png" alt="Social Media 1"></a></li>
-            <li><a href="#"><img src="social-icon2.png" alt="Social Media 2"></a></li>
+            <li><a href="#"><img src="images/FB_Logo.png" alt="Facebook"></a></li>
+            <li><a href="#"><img src="images/Linkedin_Logo.png" alt="LinkedIn"></a></li>
+            <li><a href="#"><img src="images/GitHub_Logo.png" alt="GitHub"></a></li>
         </ul>
     </div>
 </footer>
