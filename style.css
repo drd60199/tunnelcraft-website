@@ -1,4 +1,60 @@
 /* Overall Styling */
+.hero {
+        padding: 50px 0;
+    }
+
+html {
+    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
+}
+
+.about-us,
+.features,
+.team,
+.contact {
+    padding: 100px 0;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px; /* Space between text and graphic */
+    padding: 100px 20px;
+}
+
+.hero-text {
+    flex: 1; /* Allow text to take available space */
+}
+
+.hero-text h1 {
+    background-image: linear-gradient(to right, #00ff01, #00ffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 3em;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5em;
+    color: #00ff01; /* Fallback color */
+
+}
+
+.hero-text h2 {
+    background: linear-gradient(to bottom, #cccccc, #00ff01);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.5em;
+    font-weight:400;
+    line-height:1.5;
+    color: #ffffff;  /* Fallback color */
+}
+
+.hero-graphic {
+    flex: 1; /* Allow graphic to take available space */
+    text-align: center; /* Center the graphic */
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background-color: #333333;
@@ -95,6 +151,12 @@ header .logo {
         gap: 10px;
         margin-top: 10px;
     }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
 }
 
 
@@ -122,7 +184,9 @@ header .logo {
     background-color: #222222;
     padding: 30px 0;
     text-align: center;
-}.call-to-action a {
+}.call-to-action a,
+ .about-us a {
+    border-radius: 20px;
     display: inline-block;
     padding: 10px 20px;
     border: 2px solid #00ff01;
