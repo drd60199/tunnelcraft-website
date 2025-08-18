@@ -10,18 +10,20 @@ session_start(); // Start the session?>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
+<body>
 
 <header>
     <div class="container">
         <nav>
-            <div class="logo">Your Logo</div>
+            <img src="https://via.placeholder.com/400x300.png?text=Your+Awesome+Graphic" alt="Logo Placeholder">
             <button class="menu-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <ul class="nav-links">
                 <li><a href="#hero">Home</a></li>
-                <li><a href=#resources>Features</a></li>
-                <li><a href="#team">Team</a></li>
+                <li><a href="#mission">Mission</a></li>
+                <li><a href=#resources>Resources</a></li>
+                <li><a href="#community">Community</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
@@ -51,94 +53,50 @@ session_start(); // Start the session?>
     });
 </script>
 
-<body>
-
 <main>
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="container hero-content">
             <div class="hero-text">
                 <h1>Where Code and Infrastructure Meet.</h1>
                 <h2>Building and managing tech is the best way to learn. Find fun projects and guides for both developers and IT pros.</h2>
             </div>
             <div class="hero-graphic">
-                <div class="hero-graphic">
     <img src="https://via.placeholder.com/400x300.png?text=Your+Awesome+Graphic" alt="Hero Graphic Placeholder">
-</div>
-                </div>
-            </div>
-    </section>
-
-    <section class="about-us" id="about-us">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>I'm a developer and IT enthusiast. This site is my playground, where I document the challenge and satifaction of building fun projects and learning new skills, whether it's with code or hardware.</p>
-            <a href="#team">Meet the Team</a>
         </div>
+    </div>
+</section>
+
+    <section class="mission" id="mission">
+        <div class="container">
+            <h1>Mission</h1>
+                <h2>Learn By Doing</h2>
+                <p>I believe the best way to master a skill is to get your hands dirty. This site is a living testament to that philosophy, born from my personal challenge to make one small change-one "commit"-to a project every single day.</p>
+                <p>Here, we're not just reading about code and infrastructure; we're building it, one step at a time. Our mission is to provide you with the practical guides and resources you need to get your hands dirty, turn ideas into reality, and build a portfolio of real-life world skills.</p>
+            </div>
     </section>
 
     <section class="call-to-action">
-        <div class="container">
-            <a href="#">Build Something Awesome</a>
-        </div>
-    </section>
-
-    <section class="team" id="team">
-        <div class="container">
-            <h2>Meet the Team</h2>
-
-            <div class="member">
-                <img src="your-photo.jpg" alt="Your Name">
-                <h3>Your Name</h3>
-                <p>Founder & Lead Developer</p>
-                <p>Passionate gamer with over 10 years of experience in server management and development. Expertise in PHP, JavaScript, and database management. Dedicated to providing high-performance, reliable, and secure server hosting solutions.</p>
-
-                <h4>Skills</h4>
-                <ul>
-                    <li>PHP</li>
-                    <li>JavaScript</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>SQL</li>
-                    <li>Server Administration (Linux)</li>
-                    <li>Network Security</li>
-                </ul>
-
-                <h4>Experience</h4>
-                <p>Over 10 years of experience in managing and developing game servers, with a focus on providing exceptional performance, security, and customer support.</p>
-
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="mailto:your-email@example.com">your-email@example.com</a></li>
-                    <li><a href="https://www.linkedin.com/in/your-linkedin-profile">LinkedIn</a></li>
-                    <li><a href="https://github.com/your-github-profile">GitHub</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </section>
+     <div class="container">
+        <a href="#resources">Build Something Awesome</a>
+    </div>
+ </section>
 
     <section class="features" id="resources">
         <div class="container">
-            <h2>Our Features</h2>
-
+            <h2>Your Next Project Starts Here</h2>
             <div class="feature">
-                <h3>High Performance</h3>
-                <p>Experience lightning-fast speeds and lag-free gameplay with our cutting-edge hardware and optimized network infrastructure.</p>
+                <h3>Web Development Projects</h3>
+                <p>Learn the fundamentals of HTML, CSS, and JavaScript by building a portfolio from scratch, a simple web app, or a personal blog.</p>
             </div>
 
             <div class="feature">
-                <h3>DDoS Protection</h3>
-                <p>Stay protected from disruptive attacks with our robust DDoS protection, ensuring uninterrupted gaming experiences.</p>
+                <h3>IT & Infrastructure Guides</h3>
+                <p>Get comfortable with server administration and networking by following our guides to setting up your own Linux home server, automating tasks with scripts, and securing your network.</p>
             </div>
 
             <div class="feature">
-                <h3>Mod Support</h3>
-                <p>Customize your server with your favorite mods and plugins, creating unique and engaging gameplay experiences.</p>
-            </div>
-
-            <div class="feature">
-                <h3>Easy Setup</h3>
-                <p>Get your server up and running in minutes with our intuitive control panel and easy-to-follow setup guides.</p>
+                <h3>Version Control</h3>
+                <p>We make it easy to understand the industry standard: Git. Learn how to manage your project's history, collaborate with others, and keep track of your work, one commit at a time.</p>
             </div>
 
         </div>
