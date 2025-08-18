@@ -63,4 +63,4 @@ cd tunnelcraft-website
 
 **License**
 
-This projecdt is open-source and available under the **GNU General Public License v3.0**.
+This project is open-source and available under the **GNU General Public License v3.0**.
