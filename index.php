@@ -45,12 +45,64 @@ session_start(); // Start the session?>
 </header>
 
 <script>
-    const menuToggle = document.querySelector('.menu-toggle');
+  const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
 
     menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
     });
+
+    // Carousel functionality
+    document.addEventListener('DOMContentLoaded', () => {
+    const carouselSlide = document.querySelector('.carousel-slide');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    let counter = 0;
+    const totalTiles = carouselSlide.querySelectorAll('.project-tile').length;
+
+    function updateCarousel() {
+        // Calculate the number of visible tiles
+        const visibleTiles = window.innerWidth > 768 ? 3 : 1;
+        
+        // Disable buttons at the start and end of the carousel
+        if (counter === 0) {
+            prevBtn.disabled = true;
+        } else {
+            prevBtn.disabled = false;
+        }
+
+        if (counter >= totalTiles - visibleTiles) {
+            nextBtn.disabled = true;
+        } else {
+            nextBtn.disabled = false;
+        }
+
+        const tileSize = carouselSlide.querySelector('.project-tile').clientWidth;
+        carouselSlide.style.transform = `translateX(${-tileSize * counter}px)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+        const visibleTiles = window.innerWidth > 768 ? 3 : 1;
+        if (counter < totalTiles - visibleTiles) {
+            counter++;
+        }
+        updateCarousel();
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (counter > 0) {
+            counter--;
+        }
+        updateCarousel();
+    });
+
+    // Update carousel on window resize and initial load
+    window.addEventListener('resize', updateCarousel);
+    updateCarousel();
+
+});
+
 </script>
 
 <main>
@@ -74,6 +126,40 @@ session_start(); // Start the session?>
                 <p>Here, we're not just reading about code and infrastructure; we're building it, one step at a time. Our mission is to provide you with the practical guides and resources you need to get your hands dirty, turn ideas into reality, and build a portfolio of real-life world skills.</p>
             </div>
     </section>
+
+    <section id="showcase">
+    <div class="container">
+        <h2>Featured Projects</h2>
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <div class="project-tile">
+                    <img src="images/project1.png" alt="Project 1">
+                    <h3>Project Title 1</h3>
+                    <p>Brief, compelling description of your project.</p>
+                </div>
+                <div class="project-tile">
+                    <img src="images/project2.png" alt="Project 2">
+                    <h3>Project Title 2</h3>
+                    <p>Brief, compelling description of your project.</p>
+                </div>
+                <div class="project-tile">
+                    <img src="images/project3.png" alt="Project 3">
+                    <h3>Project Title 3</h3>
+                    <p>Brief, compelling description of your project.</p>
+                </div>
+                <div class="project-tile">
+                    <img src="images/project4.png" alt="Project 4">
+                    <h3>Project Title 4</h3>
+                    <p>Brief, compelling description of your project.</p>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-nav">
+            <button class="prev-btn">&lt;</button>
+            <button class="next-btn">&gt;</button>
+        </div>
+    </div>
+</section>
 
     <section class="call-to-action">
      <div class="container">
@@ -101,6 +187,7 @@ session_start(); // Start the session?>
 
         </div>
     </section>
+    
 
     <section class="contact" id="contact">
         <div class="container">
@@ -144,8 +231,6 @@ session_start(); // Start the session?>
         </ul>
     </div>
 </footer>
-
-<script src="script.js"></script>
 
 <?php ob_end_flush(); // Flush the output buffer?>
 

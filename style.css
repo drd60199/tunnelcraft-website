@@ -150,6 +150,60 @@ header .logo {
     margin: 0 auto 20px auto;
 }
 
+/*Showcase Section */
+#showcase {
+    padding: 100px 0;
+    background-color: #222222;
+    text-align: center;
+}
+
+.carousel-container {
+    width:100%;
+    overflow:hidden;
+    position: relative;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.project-tile {
+    min-width: 33.33%; /*Adjusted for 3 items per view*/
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+}
+
+.carousel-nav {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.carousel-nav button {
+    background-color: transparent;
+    border: 2px solid #00ff01;
+    color: #00ff01;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin: 0 5px;
+    border-radius: 20px; /* Rounded corners to match the rest of the site */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.carousel-nav button:hover {
+    background-color: #00ff01;
+    color: #333333; /* Dark color on hover for contrast */
+}
+
+/* Styling for the disabled state */
+.carousel-nav button:disabled {
+    border-color: #555555;
+    color: #555555;
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
 /* Call to Action */
 .call-to-action {
     background-color: #222222;
@@ -180,7 +234,7 @@ header .logo {
 .features .feature {
     padding: 20px;
     margin: 20px 0;
-    border: 1px solid #00ff01;
+    border: 1px solid #cccccc;
     border-radius: 10px;
     background-color: #222222;
 }
@@ -216,7 +270,7 @@ header .logo {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #00ff01;
+    border: 1px solid #cccccc;
     background-color: #222222;
     color: #ffffff;
 }
@@ -312,5 +366,9 @@ footer p {
 
     .hero-text h2 {
         font-size: 1.2em;
+    }
+
+    .project-tile {
+        min-width: 100%; /* 1 item per view on mobile */
     }
 }
