@@ -34,7 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = htmlspecialchars($message);
 
         // Process data (example with sending an email)
-        $to = "your-email@example.com";
+        $to = "hello@tunnelcraft.net";
         $subject = "New Contact Form Submission";
         $body = "Name: $name\nEmail: $email\nMessage: $message";
         $headers = "From: $email";
