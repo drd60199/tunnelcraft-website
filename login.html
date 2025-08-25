@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TunnelCraft</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                 <a href="index.php" class="logo-link">
+                    <img src="https://via.placeholder.com/150x50.png?text=TunnelCraft" alt="TunnelCraft Logo">
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="contact" id="login-form">
+            <div class="container">
+                <h2>Login or Sign Up</h2>
+                <div id="firebaseui-auth-container"></div>
+            </div>
+        </section>
+    </main>
+    
+    <script>
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyBKK-HgXdYGlbglPMAcWO6G5klmi2N83AU",
+  authDomain: "tunnelcraft-66a7d.firebaseapp.com",
+  projectId: "tunnelcraft-66a7d",
+  storageBucket: "tunnelcraft-66a7d.firebasestorage.app",
+  messagingSenderId: "711344739521",
+  appId: "1:711344739521:web:47f9536df50d24f5733040",
+  measurementId: "G-YF5Z5VB592"
+};
+
+        // 2. Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        // 3. FirebaseUI Config
+        const uiConfig = {
+            callbacks: {
+                signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+                    // Get the user's ID token.
+                    authResult.user.getIdToken().then(function(idToken) {
+                        // Create a form to POST the token to the server
+                        const form = document.createElement('form');
+                        form.method = 'POST';
+                        form.action = 'verify-session.php'; // The PHP script to verify the token
+
+                        const hiddenInput = document.createElement('input');
+                        hiddenInput.type = 'hidden';
+                        hiddenInput.name = 'idToken';
+                        hiddenInput.value = idToken;
+                        
+                        form.appendChild(hiddenInput);
+                        document.body.appendChild(form);
+                        form.submit();
+                    });
+                    // Return false to prevent the default redirect.
+                    return false;
+                },
+            },
+            signInOptions: [
+                firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                firebase.auth.GithubAuthProvider.PROVIDER_ID
+            ],
+            signInFlow: 'popup',
+        };
+
+        // 4. Initialize the FirebaseUI Widget
+        const ui = new firebaseui.auth.AuthUI(firebase.auth());
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TunnelCraft</p>
+        </div>
+    </footer>
+</body>
+</html>
