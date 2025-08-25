@@ -1,0 +1,11 @@
+# Composer Dependencies, lock file, and executable
+/vendor/
+/composer.lock
+composer.phar
+
+# Firebase Credentials
+firebase_credentials.json
+
+# Temporary files
+*.log
+composer-setup.php
