@@ -232,6 +232,41 @@ session_start(); // Start the session?>
     </div>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+<script>
+    // Use the same config from your login page
+    const firebaseConfig = {
+  apiKey: "***REMOVED***",
+  authDomain: "tunnelcraft-66a7d.firebaseapp.com",
+  projectId: "tunnelcraft-66a7d",
+  storageBucket: "tunnelcraft-66a7d.firebasestorage.app",
+  messagingSenderId: "711344739521",
+  appId: "1:711344739521:web:47f9536df50d24f5733040",
+  measurementId: "G-YF5Z5VB592"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    // Find the logout link
+    const logoutLink = document.querySelector('a[href="logout.php"]');
+    if (logoutLink) {
+        logoutLink.addEventListener('click', function(event) {
+            // Prevent the link from navigating immediately
+            event.preventDefault(); 
+            
+            firebase.auth().signOut().then(() => {
+                // Sign-out successful on the client-side. 
+                // Now, redirect to the PHP logout script to clear the server session.
+                window.location.href = 'logout.php';
+            }).catch((error) => {
+                console.error('Sign out error', error);
+                // Even if there's an error, try to log out on the server
+                window.location.href = 'logout.php';
+            });
+        });
+    }
+</script>
+
 <?php ob_end_flush(); // Flush the output buffer?>
 
 </body>
