@@ -32,17 +32,12 @@
         </section>
     </main>
     
+<?php require_once 'config.php'; ?>
+
     <script>
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "",
-  authDomain: "tunnelcraft-66a7d.firebaseapp.com",
-  projectId: "tunnelcraft-66a7d",
-  storageBucket: "tunnelcraft-66a7d.firebasestorage.app",
-  messagingSenderId: "711344739521",
-  appId: "1:711344739521:web:47f9536df50d24f5733040",
-  measurementId: "G-YF5Z5VB592"
-};
+       
+        // This line uses PHP to securely insert the config from your new file
+    const firebaseConfig = <?php echo json_encode($firebaseConfig); ?>;
 
         // 2. Initialize Firebase
         firebase.initializeApp(firebaseConfig);

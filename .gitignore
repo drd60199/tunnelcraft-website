@@ -5,6 +5,7 @@ composer.phar
 
 # Firebase Credentials
 firebase_credentials.json
+config.php
 
 # Temporary files
 *.log

@@ -29,12 +29,12 @@ session_start(); // Start the session?>
                 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
                     $username = $_SESSION['username'];
                     echo '<li class="user-info">';
-                    echo '<span>Welcome, '. $username. '</span>';
+                    echo '<span>Welcome, '. htmlspecialchars($username). '</span>';
                     echo '<a href="logout.php">Logout</a>';
                     echo '</li>';
                 } else {
                     echo '<li class="login-links">';
-                    echo '<a href="login.html">Login</a>';
+                    echo '<a href="login.php">Login</a>';
                     echo '<a href="signup.html">Sign Up</a>';
                     echo '</li>';
                 }
@@ -133,22 +133,22 @@ session_start(); // Start the session?>
         <div class="carousel-container">
             <div class="carousel-slide">
                 <div class="project-tile">
-                    <img src="images/project1.png" alt="Project 1">
+                    <img src="https://via.placeholder.com/400x300.png?text=Project+1" alt="Project 1">
                     <h3>Project Title 1</h3>
                     <p>Brief, compelling description of your project.</p>
                 </div>
                 <div class="project-tile">
-                    <img src="images/project2.png" alt="Project 2">
+                    <img src="https://via.placeholder.com/400x300.png?text=Project+2" alt="Project 2">
                     <h3>Project Title 2</h3>
                     <p>Brief, compelling description of your project.</p>
                 </div>
                 <div class="project-tile">
-                    <img src="images/project3.png" alt="Project 3">
+                    <img src="https://via.placeholder.com/400x300.png?text=Project+3" alt="Project 3">
                     <h3>Project Title 3</h3>
                     <p>Brief, compelling description of your project.</p>
                 </div>
                 <div class="project-tile">
-                    <img src="images/project4.png" alt="Project 4">
+                    <img src="https://via.placeholder.com/400x300.png?text=Project+4" alt="Project 4">
                     <h3>Project Title 4</h3>
                     <p>Brief, compelling description of your project.</p>
                 </div>
@@ -234,17 +234,13 @@ session_start(); // Start the session?>
 
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+
+<?php require_once 'config.php'; ?>
+
 <script>
-    // Use the same config from your login page
-    const firebaseConfig = {
-  apiKey: "",
-  authDomain: "tunnelcraft-66a7d.firebaseapp.com",
-  projectId: "tunnelcraft-66a7d",
-  storageBucket: "tunnelcraft-66a7d.firebasestorage.app",
-  messagingSenderId: "711344739521",
-  appId: "1:711344739521:web:47f9536df50d24f5733040",
-  measurementId: "G-YF5Z5VB592"
-    };
+     // This line uses PHP to securely insert the config from your new file
+    const firebaseConfig = <?php echo json_encode($firebaseConfig); ?>;
+
     firebase.initializeApp(firebaseConfig);
 
     // Find the logout link
