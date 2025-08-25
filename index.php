@@ -237,7 +237,7 @@ session_start(); // Start the session?>
 <script>
     // Use the same config from your login page
     const firebaseConfig = {
-  apiKey: "AIzaSyBKK-HgXdYGlbglPMAcWO6G5klmi2N83AU",
+  apiKey: "",
   authDomain: "tunnelcraft-66a7d.firebaseapp.com",
   projectId: "tunnelcraft-66a7d",
   storageBucket: "tunnelcraft-66a7d.firebasestorage.app",
