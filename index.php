@@ -34,8 +34,7 @@ session_start(); // Start the session?>
                     echo '</li>';
                 } else {
                     echo '<li class="login-links">';
-                    echo '<a href="login.php">Login</a>';
-                    echo '<a href="signup.html">Sign Up</a>';
+                    echo '<a href="login.php">Login/Signup</a>';
                     echo '</li>';
                 }
               ?>

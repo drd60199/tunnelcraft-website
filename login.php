@@ -67,6 +67,7 @@
                 },
             },
             signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID,
                 firebase.auth.GoogleAuthProvider.PROVIDER_ID,
                 firebase.auth.GithubAuthProvider.PROVIDER_ID
             ],
