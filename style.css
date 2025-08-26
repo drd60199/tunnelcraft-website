@@ -321,6 +321,57 @@ footer p {
     width: auto;
 }
 
+/* --- FirebaseUI Customization --- */
+
+/* Main container and card styling */
+.firebaseui-container,
+.firebaseui-card-content,
+.firebaseui-card-footer {
+    background-color: #222222 !important;
+}
+
+/* Text and Title colors */
+.firebaseui-title,
+.firebaseui-text {
+    color: #ffffff !important;
+}
+
+/* Input field styling */
+.firebaseui-input, .firebaseui-input-invalid {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border: 1px solid #00ff01 !important;
+}
+
+/* General button and link styling */
+.firebaseui-idp-button,
+.firebaseui-button {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    border-radius: 20px !important;
+    border: 2px solid #00ff01 !important;
+    background-color: transparent !important;
+    color: #00ff01 !important;
+    transition: background-color 0.3s, color 0.3s !important;
+}
+
+/* Hover effect for all buttons */
+.firebaseui-idp-button:hover,
+.firebaseui-button:hover {
+    background-color: #00ffff !important;
+    color: #333333 !important;
+}
+
+/* Styling for links inside the widget */
+.firebaseui-link {
+    color: #00ffff !important;
+}
+
+.firebaseui-link:hover {
+    color: #00ff01 !important;
+}
+
 /* Media Queries for Mobile */
 @media (max-width: 768px) {
     header nav {
@@ -371,4 +422,46 @@ footer p {
     .project-tile {
         min-width: 100%; /* 1 item per view on mobile */
     }
+}
+
+/* Align the buttons and center the login options */
+.firebaseui-idp-list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 15px;
+}
+
+/* Make the Cancel and Next buttons sit side-by-side */
+.firebaseui-form-actions {
+    display: flex !important;
+    justify-content: space-around !important;
+    align-items: center !important;
+}
+
+/* Glassmorphism Effect for Login Box */
+.firebaseui-container {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.firebaseui-idp-list, .firebaseui-card-content, .firebaseui-card-footer {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.firebaseui-title {
+    background: none !important;
+    text-fill-color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+}
+
+.firebaseui-title-text {
+    color: #ffffff !important;
 }
