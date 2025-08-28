@@ -15,7 +15,7 @@ session_start(); // Start the session?>
 <header>
     <div class="container">
         <nav>
-            <img src="https://via.placeholder.com/400x300.png?text=Your+Awesome+Graphic" alt="Logo Placeholder">
+            <img class="logo" src="images\TunnelCraftu_Logo.png" alt="Logo Placeholder">
             <button class="menu-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
@@ -106,16 +106,18 @@ session_start(); // Start the session?>
 
 <main>
     <section class="hero" id="hero">
+        <video id = "hero-video" class="hero-video" autoplay loop muted playsinline poster="images/blacktech.png">
+            <source src=videos/blacktech.mp4 type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
         <div class="container hero-content">
             <div class="hero-text">
                 <h1>Where Code and Infrastructure Meet.</h1>
                 <h2>Building and managing tech is the best way to learn. Find fun projects and guides for both developers and IT pros.</h2>
             </div>
-            <div class="hero-graphic">
-    <img src="https://via.placeholder.com/400x300.png?text=Your+Awesome+Graphic" alt="Hero Graphic Placeholder">
         </div>
-    </div>
-</section>
+    </section>
 
     <section class="mission" id="mission">
         <div class="container">
@@ -260,6 +262,20 @@ session_start(); // Start the session?>
             });
         });
     }
+</script>
+
+<script>
+    // This code waits for the page content to be fully loaded before running
+    document.addEventListener('DOMContentLoaded', (event) => {
+        // Get the video element by its ID
+        const heroVideo = document.getElementById('hero-video');
+
+        // Set the playback speed
+        // 1.0 is normal speed
+        // 0.5 is half-speed
+        // 0.75 is 75% of normal speed
+        heroVideo.playbackRate = 0.25; 
+    });
 </script>
 
 <?php ob_end_flush(); // Flush the output buffer?>
