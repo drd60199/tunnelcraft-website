@@ -1,3 +1,11 @@
+<?php
+// Import PHPMailer classes into the global namespace
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+// Load Composer's autoloader
+require 'vendor/autoload.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,71 +57,115 @@
         text-decoration: none;
         border-radius: 20px;
         transition: background-color 0.3s, color 0.3s;
-        /* The z-index from the parent container will apply */
     }
     a:hover {
         background-color: #00ffff;
         color: #333333;
     }
-
-</style>
+    </style>
 </head>
 <body>
     <div class="message-container">
         <?php
-            // Initialize message variables
-            $titleMessage = '';
-            $bodyMessage = '';
+require_once 'config.php';
+// We need to start the session to access session variables
+session_start();
 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                // Honeypot Check
-                if (!empty($_POST["website"])) {
-                    exit;
-                }
+// Initialize message variables
+$titleMessage = '';
+$bodyMessage = '';
 
-                $name = $_POST["name"];
-                $email = $_POST["email"];
-                $message = $_POST["message"];
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // 1. --- CSRF TOKEN VALIDATION ---
+    if (!isset($_POST['csrf_token']) || !hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+        $titleMessage = "Invalid Request";
+        $bodyMessage = "There was an issue with your form submission. Please go back and try again.";
+    } else {
+        // CSRF token is valid, so unset it to prevent reuse
+        unset($_SESSION['csrf_token']);
 
-                // --- Validation and Processing ---
-                if (empty($name) || empty($email) || empty($message)) {
-                    $titleMessage = "Missing Information";
-                    $bodyMessage = "Please fill in all required fields.";
-                } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    $titleMessage = "Invalid Email";
-                    $bodyMessage = "The email format you entered is not valid.";
-                } else if (!preg_match("/^[a-zA-Z' -]{2,50}$/", $name)) {
-                    $titleMessage = "Invalid Name";
-                    $bodyMessage = "Please use only letters, spaces, hyphens, and apostrophes in the name field.";
-                } else {
-                    // All checks passed, proceed to send email
-                    $name = htmlspecialchars($name);
-                    $email = htmlspecialchars(str_replace(['"', "'"], '', $email));
-                    $message = htmlspecialchars($message);
+        // 2. --- RATE LIMITING LOGIC ---
+        $max_submissions = 3;
+        $time_window = 900; // 15 minutes in seconds
+        $currentTime = time();
 
-                    $to = "hello@tunnelcraft.net";
-                    $subject = "New Contact Form Submission";
-                    $body = "Name: $name\nEmail: $email\nMessage: $message";
-                    $headers = "From: $email";
+        if (!isset($_SESSION['form_submissions'])) {
+            $_SESSION['form_submissions'] = [];
+        }
 
-                    if (mail($to, $subject, $body, $headers)) {
-                        $titleMessage = "Thank You!";
-                        $bodyMessage = "Your message has been sent successfully. We'll be in touch soon.";
-                    } else {
-                        $titleMessage = "Error";
-                        $bodyMessage = "Oops! Something went wrong and we couldn't send your message. Please try again later.";
-                    }
-                }
-            } else {
-                // Handle cases where the page is accessed directly
-                $titleMessage = "Access Denied";
-                $bodyMessage = "This page should only be accessed by submitting the contact form.";
+        // Filter out old submissions
+        $_SESSION['form_submissions'] = array_filter($_SESSION['form_submissions'], function ($timestamp) use ($currentTime, $time_window) {
+            return ($currentTime - $timestamp) < $time_window;
+        });
+
+        // Check if the submission limit is exceeded
+        if (count($_SESSION['form_submissions']) >= $max_submissions) {
+            $titleMessage = "Too Many Submissions";
+            $bodyMessage = "You have sent too many messages in a short period. Please wait a while before trying again.";
+        } else {
+            // All security checks passed, record this submission time
+            $_SESSION['form_submissions'][] = $currentTime;
+
+            // 3. --- HONEYPOT & VALIDATION ---
+            if (!empty($_POST["website"])) {
+                exit; // Silently exit for bots
             }
 
-            // --- Display the final messages ---
-            echo "<h1>" . $titleMessage . "</h1>";
-            echo "<p>" . $bodyMessage . "</p>";
-        ?>
+            $name = $_POST["name"];
+            $email = $_POST["email"];
+            $message = $_POST["message"];
+
+            if (empty($name) || empty($email) || empty($message)) {
+                $titleMessage = "Missing Information";
+                $bodyMessage = "Please fill in all required fields.";
+            } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $titleMessage = "Invalid Email";
+                $bodyMessage = "The email format you entered is not valid.";
+            } else if (!preg_match("/^[a-zA-Z' -]{2,50}$/", $name)) {
+                $titleMessage = "Invalid Name";
+                $bodyMessage = "Please use only letters, spaces, hyphens, and apostrophes in the name field.";
+            } else {
+                // 4. --- SEND EMAIL ---
+                $mail = new PHPMailer(true);
+                try {
+                    $mail->isSMTP();
+                    $mail->Host       = SMTP_HOST;
+                    $mail->SMTPAuth   = true;
+                    $mail->Username   = SMTP_USERNAME;
+                    $mail->Password   = SMTP_PASSWORD;
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                    $mail->Port       = SMTP_PORT;
+
+                    $mail->setFrom($email, htmlspecialchars($name));
+                    $mail->addAddress('hello@tunnelcraft.net', 'TunnelCraft Admin');
+                    $mail->addReplyTo($email, htmlspecialchars($name));
+
+                    $mail->isHTML(false);
+                    $mail->Subject = 'New Contact Form Submission from ' . htmlspecialchars($name);
+                    $mail->Body    = "Name: " . htmlspecialchars($name) . "\n" .
+                                   "Email: " . htmlspecialchars($email) . "\n" .
+                                   "Message:\n" . htmlspecialchars($message);
+
+                    $mail->send();
+                    $titleMessage = "Thank You!";
+                    $bodyMessage = "Your message has been sent successfully. We'll be in touch soon.";
+                } catch (Exception $e) {
+                    $titleMessage = "Error";
+                    $bodyMessage = "Oops! Something went wrong and we couldn't send your message. Please try again later.";
+                }
+            }
+        }
+    }
+} else {
+    // Handle cases where the page is accessed directly via GET request
+    $titleMessage = "Access Denied";
+    $bodyMessage = "This page should only be accessed by submitting the contact form.";
+}
+
+// --- Display the final messages ---
+echo "<h1>" . htmlspecialchars($titleMessage) . "</h1>";
+echo "<p>" . htmlspecialchars($bodyMessage) . "</p>";
+?>
         <a href="index.php#contact">Go Back</a>
     </div>
 
