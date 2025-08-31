@@ -1,5 +1,14 @@
 <?php ob_start(); // Enable output buffering
-session_start(); // Start the session?>
+session_start();
+
+// Generate a new CSRF token if one doesn't exist
+if (empty($_SESSION['csrf_token'])) {
+    // bin2hex and random_bytes create a secure, random, hexadecimal string
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+$csrf_token = $_SESSION['csrf_token'];
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -195,6 +204,9 @@ session_start(); // Start the session?>
             <h2>Contact Us</h2>
 
             <form action="submit_contact.php" method="post">
+                
+                <input type="hidden" name="csrf_token" value="<?php echo $csrf_token; ?>">
+            
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" required>
