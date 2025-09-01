@@ -115,8 +115,8 @@ $csrf_token = $_SESSION['csrf_token'];
 
 <main>
     <section class="hero" id="hero">
-        <video id = "hero-video" class="hero-video" autoplay loop muted playsinline poster="images/blacktech.png">
-            <source src=videos/blacktech.mp4 type="video/mp4">
+        <video id = "hero-video" class="hero-video" autoplay loop muted playsinline poster="images/lightgreytech.png">
+            <source src=videos/lightgreytech.mp4 type="video/mp4">
             Your browser does not support the video tag.
         </video>
 
@@ -132,8 +132,8 @@ $csrf_token = $_SESSION['csrf_token'];
         <div class="container">
             <h1>Mission</h1>
                 <h2>Learn By Doing</h2>
-                <p>I believe the best way to master a skill is to get your hands dirty. This site is a living testament to that philosophy, born from my personal challenge to make one small change-one "commit"-to a project every single day.</p>
-                <p>Here, we're not just reading about code and infrastructure; we're building it, one step at a time. Our mission is to provide you with the practical guides and resources you need to get your hands dirty, turn ideas into reality, and build a portfolio of real-life world skills.</p>
+                <p>--Forget passive reading.--</p>
+                <p>TunnelCraft offers hands-on projects and practical guides designed to help you build real-world skills in code and infrastructure. It's time to get your hands dirty, turn ideas into reality.</p>
             </div>
     </section>
 
@@ -286,7 +286,7 @@ $csrf_token = $_SESSION['csrf_token'];
         // 1.0 is normal speed
         // 0.5 is half-speed
         // 0.75 is 75% of normal speed
-        heroVideo.playbackRate = 0.25; 
+        heroVideo.playbackRate = 0.75; 
     });
 </script>
 
