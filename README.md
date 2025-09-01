@@ -52,7 +52,7 @@ cd tunnelcraft-website
 ```
 3. **Start your local server**: Ensure your PHP server is running.
 
-4. **Open the website**: Navigate to http://localhost/tunnelcraft-website/ in your browser
+4. **Open the website**: Navigate to localhost:your-server-port in your browser
 
 **Roadmap**
 
