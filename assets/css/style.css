@@ -1,3 +1,15 @@
+@font-face {
+    font-family: 'BLOKK';
+    src: url('../fonts/BLOKKNeue-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply BLOKK font to the guide's text */
+.guide-content {
+    font-family: 'BLOKK', Arial, sans-serif;
+}
+
 /* Overall Styling */
 html {
     scroll-behavior: smooth;
@@ -29,6 +41,15 @@ a:hover {
 header {
     background-color: #222222;
     padding: 20px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    transition: transform 0.3 ease-in-out;
+}
+
+.header-hidden {
+    transform: translate(-100%);
 }
 
 header nav {
@@ -454,6 +475,7 @@ footer p {
 /* Glassmorphism Effect for Login Box */
 .firebaseui-container {
     background-color: rgba(0, 0, 0, 0.5) !important;
+    -webkit-backdrop-filter: blur(10px) ;
     backdrop-filter: blur(10px);
     border-radius: 10px;
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -467,12 +489,250 @@ footer p {
 
 .firebaseui-title {
     background: none !important;
-    text-fill-color: #ffffff !important;
     -webkit-text-fill-color: #ffffff !important;
+    text-fill-color: #ffffff !important;
     -webkit-background-clip: unset !important;
     background-clip: unset !important;
 }
 
 .firebaseui-title-text {
     color: #ffffff !important;
+}
+
+/* --- Community Guide Page Styling --- */
+.guide-container {
+    display: flex;
+    gap: 30px;
+    padding: 50px 20px;
+}
+
+.guide-nav {
+    flex: 0 0 250px; /* Sidebar width */
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+}
+
+.guide-nav h3 {
+    color: #00ffff;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+}
+
+.guide-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.guide-nav li {
+    margin: 15px 0;
+}
+
+.guide-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.guide-nav a:hover {
+    color: #00ff01;
+}
+
+/* Style for the active chapter link */
+.guide-nav a.active {
+    color: #00ffff;
+    font-weight: bold;
+}
+
+.guide-content {
+    flex-grow: 1;
+}
+
+.guide-content h1 {
+    font-size: 2.5em;
+    color: #00ff01;
+}
+
+.guide-content h2 {
+    color: #00ffff;
+    border-bottom: 1px solid #555;
+    padding-bottom: 10px;
+    margin-top: 40px;
+}
+
+.guide-content .author {
+    font-style: italic;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+/* Styling for code blocks */
+.guide-content pre {
+    background-color: #222222;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #00ff01;
+    overflow-x: auto; /* For long lines of code */
+}
+
+.guide-content code {
+    font-family: 'Courier New', Courier, monospace;
+    color: #ffffff;
+}
+
+/* Media Query for mobile guide view */
+@media (max-width: 768px) {
+    .guide-container {
+        flex-direction: column;
+    }
+    .guide-nav {
+        position: static;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}
+
+/* Style for the "Copy Code" button */
+.guide-content pre {
+    position: relative;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #333;
+    color: #00ff01;
+    border: 1px solid #00ff01;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s;
+}
+
+.guide-content pre:hover .copy-btn {
+    opacity: 1; /* Show on hover */
+}
+
+/* Progress Bar Styling */
+#progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px;
+    background-color: #00ffff;
+    z-index: 1000;
+    transition: width 0.1s linear;
+}
+
+/* Custom Scrollbar for Webkit browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #222;
+}
+::-webkit-scrollbar-thumb {
+    background: #00ff01;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00ffff;
+}
+
+.guide-content section {
+    scroll-margin-top: 20px; /* Adjust this value as needed */
+}
+
+/* --- Guides Library Page --- */
+.guides-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.guides-header h1 {
+    margin-bottom: 10px;
+}
+
+.filter-controls {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 2px solid #555;
+    color: #ccc;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-btn:hover {
+    border-color: #00ff01;
+    color: #00ff01;
+}
+
+.filter-btn.active {
+    background-color: #00ff01;
+    border-color: #00ff01;
+    color: #222;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.guide-card {
+    background-color: #222;
+    border: 1px solid #444;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 1, 0.2);
+    border-color: #00ff01;
+}
+
+.guide-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: #00ffff;
+}
+
+.card-tags {
+    margin-top: 15px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #333;
+    color: #00ff01;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }

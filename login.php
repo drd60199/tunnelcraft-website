@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - TunnelCraft</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
@@ -17,7 +17,7 @@
         <div class="container">
             <nav>
                  <a href="index.php" class="logo-link">
-                    <img src="https://via.placeholder.com/150x50.png?text=TunnelCraft" alt="TunnelCraft Logo">
+                    <img class="logo" src="assets/images/TunnelCraftu_Logo.png" alt="TunnelCraft Logo">
                 </a>
             </nav>
         </div>
@@ -32,7 +32,7 @@
         </section>
     </main>
     
-<?php require_once 'config.php'; ?>
+<?php require_once 'includes/config.php'; ?>
 
     <script>
        
@@ -51,7 +51,7 @@
                         // Create a form to POST the token to the server
                         const form = document.createElement('form');
                         form.method = 'POST';
-                        form.action = 'verify-session.php'; // The PHP script to verify the token
+                        form.action = 'includes/verify-session.php'; // The PHP script to verify the token
 
                         const hiddenInput = document.createElement('input');
                         hiddenInput.type = 'hidden';

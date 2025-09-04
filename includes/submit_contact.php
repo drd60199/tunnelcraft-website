@@ -4,7 +4,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 // Load Composer's autoloader
-require 'vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +67,7 @@ require 'vendor/autoload.php';
 <body>
     <div class="message-container">
         <?php
-require_once 'config.php';
+require_once __DIR__ . '/config.php';
 // We need to start the session to access session variables
 session_start();
 
@@ -128,6 +128,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // 4. --- SEND EMAIL ---
                 $mail = new PHPMailer(true);
                 try {
+
+                    // $mail->SMTPDebug = 2; // Enable verbose debug output
                     $mail->isSMTP();
                     $mail->Host       = SMTP_HOST;
                     $mail->SMTPAuth   = true;
@@ -136,7 +138,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                     $mail->Port       = SMTP_PORT;
 
-                    $mail->setFrom($email, htmlspecialchars($name));
+                    $mail->setFrom('hello@tunnelcraft.net', htmlspecialchars('TunnelCraft Form'));
                     $mail->addAddress('hello@tunnelcraft.net', 'TunnelCraft Admin');
                     $mail->addReplyTo($email, htmlspecialchars($name));
 
@@ -166,7 +168,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 echo "<h1>" . htmlspecialchars($titleMessage) . "</h1>";
 echo "<p>" . htmlspecialchars($bodyMessage) . "</p>";
 ?>
-        <a href="index.php#contact">Go Back</a>
+        <a href="../index.php#contact">Go Back</a>
     </div>
 
 </body>
