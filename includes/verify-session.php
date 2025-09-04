@@ -2,17 +2,18 @@
 session_start();
 
 // Make sure you have run "composer require kreait/firebase-php"
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\Exception\Auth\IdTokenVerificationFailed;
+use InvalidArgumentException;
 
 if (isset($_POST['idToken'])) {
     $idTokenString = $_POST['idToken'];
 
     try {
         // Point this to your downloaded service account JSON file
-        $factory = (new Factory)->withServiceAccount('firebase_credentials.json');
+        $factory = (new Factory)->withServiceAccount(__DIR__ . '/../firebase_credentials.json');
         $auth = $factory->createAuth();
 
         // Verify the ID token
@@ -30,7 +31,7 @@ if (isset($_POST['idToken'])) {
         $_SESSION['uid'] = $uid;
         
         // Redirect to the homepage after successful login
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
         
     } catch (IdTokenVerificationFailed | InvalidArgumentException $e) {
