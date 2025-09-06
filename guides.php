@@ -17,20 +17,20 @@
                 </div>
 
                 <div class="guide-grid">
-                    <a href="path/to/your/guide.php" class="guide-card" data-category="web-dev">
-                        <img src="https://via.placeholder.com/400x250.png?text=Portfolio+Site" alt="Portfolio Project">
+                    <a href="guides/Git&Github.php" class="guide-card" data-category="web-dev">
+                        <img src="assets/images/git&github_card_image.png" alt="Portfolio Project">
                         <div class="card-content">
-                            <h3>Build a Personal Portfolio Website</h3>
-                            <p>Learn the fundamentals of HTML and CSS by creating a stunning portfolio from scratch.</p>
+                            <h3>Getting Started with Git & Github</h3>
+                            <p>Learn the fundamentals of version control and collaboration from setup to your first pull request.</p>
                             <div class="card-tags">
                                 <span class="tag">Beginner</span>
-                                <span class="tag">HTML</span>
-                                <span class="tag">CSS</span>
+                                <span class="tag">Git</span>
+                                <span class="tag">Version Control</span>
                             </div>
                         </div>
                     </a>
 
-                    <a href="#" class="guide-card" data-category="it-infra">
+                    <!--<a href="#" class="guide-card" data-category="it-infra">
                         <img src="https://via.placeholder.com/400x250.png?text=Home+Server" alt="Home Server Project">
                         <div class="card-content">
                             <h3>Set Up a Linux Home Server</h3>
@@ -41,7 +41,7 @@
                                 <span class="tag">Networking</span>
                             </div>
                         </div>
-                    </a>
+                    </a>!-->
 
                     </div>
             </div>
