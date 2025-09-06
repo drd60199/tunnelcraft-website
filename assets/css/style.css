@@ -6,7 +6,7 @@
 }
 
 /* Apply BLOKK font to the guide's text */
-.guide-content {
+  .font-blokk .guide-content {
     font-family: 'BLOKK', Arial, sans-serif;
 }
 
@@ -509,7 +509,7 @@ footer p {
 .guide-nav {
     flex: 0 0 250px; /* Sidebar width */
     position: sticky;
-    top: 20px;
+    top: 120px;
     height: fit-content;
 }
 
@@ -735,4 +735,53 @@ footer p {
     font-size: 0.8em;
     margin-right: 5px;
     margin-bottom: 5px;
+}
+
+/* --- Additional Guide Content Styles --- */
+
+/* For links within a paragraph of text */
+.guide-content p a {
+    color: #00ffff;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* Blockquotes for notes, tips, or warnings */
+.guide-content blockquote {
+    background-color: #2a2a2a;
+    border-left: 4px solid #00ff01;
+    margin: 20px 0;
+    padding: 15px 20px;
+    font-style: italic;
+    color: #ccc;
+}
+
+/* Unordered and Ordered Lists */
+.guide-content ul,
+.guide-content ol {
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+.guide-content li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* For inline code snippets within a paragraph */
+.guide-content p > code,
+.guide-content li > code {
+    background-color: #222;
+    color: #00ff01;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Horizontal Rule for section breaks */
+.guide-content hr {
+    border: 0;
+    height: 1px;
+    background-color: #555;
+    margin: 40px 0;
 }
