@@ -67,7 +67,7 @@ require __DIR__ . '/../vendor/autoload.php';
 <body>
     <div class="message-container">
         <?php
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/../config.php';
 // We need to start the session to access session variables
 session_start();
 

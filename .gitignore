@@ -1,11 +1,13 @@
 # Composer Dependencies, lock file, and executable
 /vendor/
+/node_modules/
 /composer.lock
 composer.phar
 
 # Firebase Credentials
 firebase_credentials.json
 config.php
+.env
 
 # Temporary files
 *.log

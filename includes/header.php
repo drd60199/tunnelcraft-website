@@ -1,6 +1,6 @@
 <?php
 // Include the config file to get the BASE_URL
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/../config.php';
 
 // Start output buffering and session
 ob_start();

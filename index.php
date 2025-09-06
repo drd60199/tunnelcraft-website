@@ -31,24 +31,24 @@
         <div class="carousel-container">
             <div class="carousel-slide">
                 <div class="project-tile">
-                    <img src="https://via.placeholder.com/400x300.png?text=Project+1" alt="Project 1">
-                    <h3>Project Title 1</h3>
-                    <p>Brief, compelling description of your project.</p>
+                    <img src="https://via.placeholder.com/400x300.png?text=Coming+Soon" alt="Web Development Project">
+                    <h3>Personal Portfolio: Bootstrap</h3>
+                    <p>Coming Soon: A step-by-step guide to building your first portfolio website with Bootstrap.</p>
                 </div>
                 <div class="project-tile">
-                    <img src="https://via.placeholder.com/400x300.png?text=Project+2" alt="Project 2">
-                    <h3>Project Title 2</h3>
-                    <p>Brief, compelling description of your project.</p>
+                    <img src="https://via.placeholder.com/400x300.png?text=Coming+Soon" alt="IT & Infrastructure Project">
+                    <h3>Your First Home Server</h3>
+                    <p>Coming Soon: Learn how to turn an old PC into a powerful home media and file server using Linux.</p>
                 </div>
                 <div class="project-tile">
-                    <img src="https://via.placeholder.com/400x300.png?text=Project+3" alt="Project 3">
-                    <h3>Project Title 3</h3>
-                    <p>Brief, compelling description of your project.</p>
+                    <img src="https://via.placeholder.com/400x300.png?text=Coming+Soon" alt="Python Automation Project">
+                    <h3>Automate with Python Scripts</h3>
+                    <p>Coming Soon: A beginner's guide to writing simple Python scripts that can organize files and automate daily tasks.</p>
                 </div>
                 <div class="project-tile">
-                    <img src="https://via.placeholder.com/400x300.png?text=Project+4" alt="Project 4">
-                    <h3>Project Title 4</h3>
-                    <p>Brief, compelling description of your project.</p>
+                    <img src="https://via.placeholder.com/400x300.png?text=Coming+Soon" alt="Weather App Project">
+                    <h3>Simple Weather App</h3>
+                    <p>Coming Soon: Learn how to fetch and display real-time data from a public API by building a clean, modern weather app.</p>
                 </div>
             </div>
         </div>
@@ -136,7 +136,7 @@
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
 
-<?php require_once 'includes/config.php'; ?>
+<?php require_once 'config.php'; ?>
 
 <script>
   const menuToggle = document.querySelector('.menu-toggle');
