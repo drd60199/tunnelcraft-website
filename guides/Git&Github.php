@@ -170,5 +170,14 @@ window.addEventListener('scroll', () => {
     progressBar.style.width = scrollPercentage + '%';
 });</script>
 
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('tunnelcraftbydamien', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#222222',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
 </body>
 </html>

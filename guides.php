@@ -48,7 +48,7 @@
         </section>
     </main>
     
-    <?php // You can require your footer file here ?>
+    <?php require 'includes/footer.php'; ?>
     
     <script src="assets/js/guide-filter.js"></script>
     <script src="../assets/js/header-scroll.js"></script>
