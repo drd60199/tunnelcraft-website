@@ -79,10 +79,7 @@
         ui.start('#firebaseui-auth-container', uiConfig);
     </script>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 TunnelCraft</p>
-        </div>
-    </footer>
+    <?php require 'includes/footer.php'; ?>
+
 </body>
 </html>

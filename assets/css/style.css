@@ -11,6 +11,10 @@
 }
 
 /* Overall Styling */
+main {
+    flex-grow: 1;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -20,6 +24,9 @@ body {
     background-color: #333333;
     color: #ffffff;
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 a {
@@ -784,4 +791,10 @@ footer p {
     height: 1px;
     background-color: #555;
     margin: 40px 0;
+}
+
+/* Ko-fi Button Styling */
+.kofi-button img {
+    height: 40px;
+    width: auto;
 }
