@@ -15,6 +15,7 @@ require_once __DIR__ . '/../config.php';
 <script>
     // This dynamic line passes the config from PHP to JavaScript
     const firebaseConfig = <?php echo json_encode($firebaseConfig); ?>;
+    firebase.initializeApp(firebaseConfig);
 </script>
 
 <script src="<?php echo BASE_URL; ?>assets/js/main.js"></script>
