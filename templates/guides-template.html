@@ -67,12 +67,12 @@ server.listen(port, hostname, () => {
         </main>
     </div>
 
-    <script src="../assets/js/guide-nav.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-okaidia.min.css">
+     <script src="../assets/js/guide-nav.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markdown.min.js"></script>
 <script>document.querySelectorAll('.guide-content pre').forEach(pre => {
     const button = document.createElement('button');
     button.className = 'copy-btn';
@@ -102,6 +102,16 @@ window.addEventListener('scroll', () => {
 
     progressBar.style.width = scrollPercentage + '%';
 });</script>
+
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('tunnelcraftbydamien', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#222222',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
 
 </body>
 </html>

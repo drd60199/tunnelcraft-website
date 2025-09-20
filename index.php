@@ -31,9 +31,9 @@
         <div class="carousel-container">
             <div class="carousel-slide">
                 <div class="project-tile">
-                    <img src="https://via.placeholder.com/400x300.png?text=Coming+Soon" alt="Web Development Project">
-                    <h3>Personal Portfolio: Bootstrap</h3>
-                    <p>Coming Soon: A step-by-step guide to building your first portfolio website with Bootstrap.</p>
+                    <img src="assets/images/Bootstrap_Feature.png" alt="Web Development Project">
+                    <h3>Build a Responsive Website with Bootstrap</h3>
+                    <p>Create a modern, mobile-friendly personal website from scratch using Bootstrap's powerful grid system and interactive components.</p>
                 </div>
                 <div class="project-tile">
                     <img src="https://via.placeholder.com/400x300.png?text=Coming+Soon" alt="IT & Infrastructure Project">

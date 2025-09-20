@@ -30,28 +30,32 @@ $csrf_token = $_SESSION['csrf_token'];
     <div class="container">
         <nav>
             <a href="<?php echo BASE_URL; ?>index.php"><img class="logo" src="<?php echo BASE_URL; ?>assets/images/TunnelCraftu_Logo.png" alt="Logo Placeholder"></a>
+            
             <button class="menu-toggle" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
+
             <ul class="nav-links">
                 <li><a href="<?php echo BASE_URL; ?>index.php#hero">Home</a></li>
                 <li><a href="<?php echo BASE_URL; ?>guides.php">Guides</a></li>
                 <li><a href="<?php echo BASE_URL; ?>index.php#contact">Contact</a></li>
-                
+            </ul>
+
+            <div class="nav-account">
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
                     $username = $_SESSION['username'];
-                    echo '<li class="user-info">';
+                    echo '<div class="user-info">';
                     echo '<span>Welcome, '. htmlspecialchars($username). '</span>';
                     echo '<a href="' . BASE_URL . 'includes/logout.php">Logout</a>';
-                    echo '</li>';
+                    echo '</div>';
                 } else {
-                    echo '<li class="login-links">';
+                    echo '<div class="login-links">';
                     echo '<a href="' . BASE_URL . 'login.php">Login/Signup</a>';
-                    echo '</li>';
+                    echo '</div>';
                 }
                 ?>
-            </ul>
+            </div>
         </nav>
     </div>
 </header>
