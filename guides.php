@@ -18,7 +18,7 @@
 
                 <div class="guide-grid">
                     <a href="guides/Git&Github.php" class="guide-card" data-category="web-dev">
-                        <img src="assets/images/git&github_card_image.png" alt="Portfolio Project">
+                        <img src="assets/images/git&github_card_image.png" alt="Git & Github Project">
                         <div class="card-content">
                             <h3>Getting Started with Git & Github</h3>
                             <p>Learn the fundamentals of version control and collaboration from setup to your first pull request.</p>
@@ -26,6 +26,19 @@
                                 <span class="tag">Beginner</span>
                                 <span class="tag">Git</span>
                                 <span class="tag">Version Control</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="guides/Bootstrap.php" class="guide-card" data-category="web-dev">
+                        <img src="assets/images/Bootstrap_card_image.png" alt="Bootstrap Project">
+                        <div class="card-content">
+                            <h3>Build a Responsive Website with Bootstrap</h3>
+                            <p>Create a modern, mobile-friendly personal website from scratch using Bootstrap's powerful grid system and interactive components.</p>
+                            <div class="card-tags">
+                                <span class="tag">Beginner</span>
+                                <span class="tag">Bootstrap</span>
+                                <span class="tag">Responsive Design</span>
                             </div>
                         </div>
                     </a>
