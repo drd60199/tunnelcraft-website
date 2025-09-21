@@ -1,4 +1,9 @@
+/* ==========================================================================
+   1. FONT IMPORTS & DEFINITIONS
+   ========================================================================== */
+
 @import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@700&family=Roboto:wght@400&display=swap');
+
 @font-face {
     font-family: 'BLOKK';
     src: url('../fonts/BLOKKNeue-Regular.woff') format('woff');
@@ -6,38 +11,43 @@
     font-style: normal;
 }
 
-/* Apply BLOKK font to the guide's text */
-  .font-blokk .guide-content {
-    font-family: 'BLOKK', Arial, sans-serif;
-}
-
-/* Overall Styling */
-main {
-    flex-grow: 1;
-}
+/* ==========================================================================
+   2. GLOBAL & BASE STYLES
+   ========================================================================== */
 
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    /* Set Roboto as the main font for paragraphs */
     font-family: 'Roboto', sans-serif;
     background-color: #333333;
-    color: #e0e0e0; /* A slightly softer white, easier on the eyes */
+    color: #e0e0e0;
     margin: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    line-height: 1.6; /* Increased line spacing for better readability */
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Apply Exo 2 to all major headings */
+main {
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Headings use the Exo 2 font */
 h1, h2, h3 {
     font-family: 'Exo 2', sans-serif;
-    letter-spacing: 1px; /* Slightly increased letter spacing for a modern look */
+    letter-spacing: 1px;
 }
 
+/* Link Styling */
 a {
     color: #00ff01;
     text-decoration: none;
@@ -47,13 +57,43 @@ a:hover {
     color: #00ffff;
 }
 
-.container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
+/* Custom Scrollbar for Webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #222;
+}
+::-webkit-scrollbar-thumb {
+    background: #00ff01;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #00ffff;
 }
 
-/* Header & Nav */
+/* ==========================================================================
+   3. FLUID TYPOGRAPHY (Responsive Font Sizes)
+   ========================================================================== */
+
+/* This system makes all key text elements scale smoothly with the screen width. */
+
+.hero-text h1 { font-size: clamp(2.5rem, 1.5rem + 4vw, 4rem); }
+.hero-text h2 { font-size: clamp(1.1rem, 0.8rem + 1.5vw, 1.5rem); }
+.mission h2, #showcase h2, .features h2, .contact h2, .guides-header h1 { font-size: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem); }
+.mission p { font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem); }
+.project-tile h3 { font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem); }
+.project-tile p { font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem); }
+.guide-content h1 { font-size: clamp(2rem, 1.5rem + 2.5vw, 3rem); }
+.guide-content h2, .guide-nav h3 { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.25rem); }
+.guide-content p, .guide-content li { font-size: clamp(0.9rem, 0.8rem + 0.3vw, 1.125rem); }
+.guide-content pre, .guide-content code { font-size: clamp(0.8125rem, 0.75rem + 0.25vw, 0.9375rem); }
+.nav-links a, .nav-account a, .user-info span { font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem); }
+
+/* ==========================================================================
+   4. LAYOUT: HEADER & FOOTER
+   ========================================================================== */
+
 header {
     background-color: #222222;
     padding: 20px 0;
@@ -61,80 +101,34 @@ header {
     top: 0;
     width: 100%;
     z-index: 100;
-    transition: transform 0.3 ease-in-out;
-}
-
-.header-hidden {
-    transform: translate(-100%);
 }
 
 header nav {
     display: flex;
-    justify-content: flex-start;
     align-items: center;
-}
-
-header nav .logo {
-    height: 75px;
-    width: auto;
-    filter: drop-shadow(0 0 8px rgba(0, 255, 1, 0.4));
-    transition: filter 0.3s ease;
-}
-
-header nav .logo:hover {
-    filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.6));
-}
-
-header .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #00ff01;
+    gap: 20px;
 }
 
 .nav-links {
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
     display: flex;
     align-items: center;
     gap: 30px;
-    justify-content: center;
 }
 
-.nav-account {
-    margin-left: auto;
+footer {
+    background-color: #222222;
+    padding: 20px 0;
+    text-align: center;
 }
 
-.nav-links li {
-    margin-left: 0;
-}
+/* ==========================================================================
+   5. LAYOUT: PAGE SECTIONS
+   ========================================================================== */
 
-.nav-links a {
-    color: #00ff01;
-    text-decoration: none;
-}
-
-.nav-links a:hover {
-    color: #00ffff;
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #00ff01;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-.login-links, .user-info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Hero Section */
+/* --- Homepage Sections --- */
 .hero {
     position: relative;
     display: flex;
@@ -144,165 +138,20 @@ header .logo {
     padding: 100px 20px;
     height: 80vh;
     overflow: hidden;
-
-}
-.hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    object-position: center;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 1;
-}
-
-.hero-text h1 {
-    background-image: linear-gradient(to right, #00ff01, #00ffff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 3em;
-    font-weight: 700;
-    line-height: 1.2;
-    margin-bottom: 0.5em;
-    color: #00ff01;
-}
-
-.hero-text h2 {
-    background: linear-gradient(to bottom, #cccccc, #00ff01);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.5em;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #ffffff;
-}
-
-/* Mission Section */
-.mission {
+.mission, #showcase, .features, .contact {
     padding: 100px 0;
     text-align: center;
 }
 
-.mission h2 {
-    display: inline-block;
-    background: linear-gradient(to bottom, #cccccc, #00ff01);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: #ffffff;
-    margin-bottom: 20px;
-    font-size: clamp(1.75rem, 1.5rem + 1.5vw, 2.5rem);
-}
-
-.mission p {
-    color: #ffffff;
-    max-width: 700px;
-    margin: 0 auto 20px auto;
-    font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
-}
-
-/*Showcase Section */
 #showcase {
-    padding: 100px 0;
     background-color: #222222;
-    text-align: center;
 }
 
-.carousel-container {
-    width:100%;
-    overflow:hidden;
-    position: relative;
-}
-
-.carousel-slide {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
-
-.project-tile {
-    min-width: 33.33%; /*Adjusted for 3 items per view*/
-    box-sizing: border-box;
-    padding: 20px;
-    text-align: center;
-}
-
-.project-tile h3 {
-  font-size: clamp(1.375rem, 1.2rem + 0.75vw, 1.75rem);
-}
-
-.project-tile p {
-  font-size: clamp(0.875rem, 0.8rem + 0.25vw, 1rem);
-  line-height: 1.5; /* Improves line spacing in the cards */
-}
-
-.project-tile img {
-  width: 100%;
-  height: 225px;
-  object-fit: cover; 
-  display: block;
-}
-
-.carousel-nav {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.carousel-nav button {
-    background-color: transparent;
-    border: 2px solid #00ff01;
-    color: #00ff01;
-    padding: 10px 15px;
-    cursor: pointer;
-    margin: 0 5px;
-    border-radius: 20px; /* Rounded corners to match the rest of the site */
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.carousel-nav button:hover {
-    background-color: #00ff01;
-    color: #333333; /* Dark color on hover for contrast */
-}
-
-/* Styling for the disabled state */
-.carousel-nav button:disabled {
-    border-color: #555555;
-    color: #555555;
-    cursor: not-allowed;
-    background-color: transparent;
-}
-
-/* Call to Action */
 .call-to-action {
     background-color: #222222;
     padding: 30px 0;
-    text-align: center;
-}
-
-.call-to-action a {
-    border-radius: 20px;
-    display: inline-block;
-    padding: 10px 20px;
-    border: 2px solid #00ff01;
-    color: #00ff01;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.call-to-action a:hover {
-    background-color: #00ffff;
-    color: #333333;
-}
-
-/* Features/Resources */
-.features {
-    padding: 100px 0;
     text-align: center;
 }
 
@@ -318,12 +167,180 @@ header .logo {
     color: #00ffff;
 }
 
-/* Contact Section */
-.contact {
-    padding: 100px 0;
-    text-align: center;
+/* --- Guide Page Layout --- */
+.guide-container {
+    display: flex;
+    gap: 30px;
+    padding: 50px 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
+.guide-nav {
+    flex: 0 0 250px;
+    position: sticky;
+    top: 120px; /* Adjust based on header height */
+    height: fit-content;
+}
+
+.guide-content {
+    flex-grow: 1;
+    min-width: 0; /* Prevents flex items from overflowing */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.guide-content section {
+    scroll-margin-top: 120px; /* Offset for sticky header */
+}
+
+/* ==========================================================================
+   6. COMPONENT STYLES
+   ========================================================================== */
+
+/* --- Navigation --- */
+header nav .logo {
+    height: 75px;
+    width: auto;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 1, 0.4));
+    transition: filter 0.3s ease;
+}
+
+header nav .logo:hover {
+    filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.6));
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.menu-toggle {
+    display: none; /* Hidden by default, shown on mobile */
+    background: none;
+    border: none;
+    color: #00ff01;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.nav-account, .login-links, .user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* --- Hero Video & Content --- */
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-text h1 {
+    background-image: linear-gradient(to right, #00ff01, #00ffff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text h2 {
+    background: linear-gradient(to bottom, #cccccc, #00ff01);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Mission Section Heading Gradient */
+.mission h2 {
+    display: inline-block; /* Ensures the gradient only covers the text area */
+    background: linear-gradient(to bottom, #cccccc, #00ff01);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- Carousel --- */
+.carousel-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-slide {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.project-tile {
+    min-width: 33.33%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.project-tile img {
+    width: 100%;
+    height: 225px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Buttons --- */
+.carousel-nav button, .call-to-action a, .contact button[type="submit"], .filter-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid #00ff01;
+    color: #00ff01;
+    background: transparent;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.carousel-nav button:hover, .call-to-action a:hover, .contact button[type="submit"]:hover {
+    background-color: #00ffff;
+    color: #333333;
+}
+
+.carousel-nav button:disabled {
+    border-color: #555555;
+    color: #555555;
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
+.filter-btn {
+    border-color: #555;
+    color: #ccc;
+    margin: 5px;
+}
+
+.filter-btn:hover {
+    border-color: #00ff01;
+    color: #00ff01;
+}
+
+.filter-btn.active {
+    background-color: #00ff01;
+    border-color: #00ff01;
+    color: #222;
+}
+
+
+/* --- Forms --- */
 .contact form {
     max-width: 600px;
     margin: 0 auto;
@@ -348,214 +365,59 @@ header .logo {
     border: 1px solid #cccccc;
     background-color: #222222;
     color: #ffffff;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
 }
 
-.contact button[type="submit"] {
-    display: inline-block;
-    padding: 10px 20px;
-    border: 2px solid #00ff01;
-    color: #00ff01;
-    background: transparent;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-.contact button[type="submit"]:hover {
-    background-color: #00ffff;
-    color: #333333;
-}
-
-/* Footer */
-footer {
-    background-color: #222222;
-    padding: 20px 0;
-    text-align: center;
-}
-
-footer p {
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.social-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.social-links li {
-    margin: 0 15px;
-}
-
-.social-links img {
-    height: 35px;
-    width: auto;
-}
-
-/* --- FirebaseUI Customization --- */
-
-/* Main container and card styling */
-.firebaseui-container,
-.firebaseui-card-content,
-.firebaseui-card-footer {
-    background-color: #222222 !important;
-}
-
-/* Text and Title colors */
-.firebaseui-title,
-.firebaseui-text {
-    color: #ffffff !important;
-}
-
-/* Input field styling */
-.firebaseui-input, .firebaseui-input-invalid {
-    background-color: #333333 !important;
-    color: #ffffff !important;
-    border: 1px solid #00ff01 !important;
-}
-
-/* General button and link styling */
-.firebaseui-idp-button,
-.firebaseui-button {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    border-radius: 20px !important;
-    border: 2px solid #00ff01 !important;
-    background-color: transparent !important;
-    color: #00ff01 !important;
-    transition: background-color 0.3s, color 0.3s !important;
-}
-
-/* Hover effect for all buttons */
-.firebaseui-idp-button:hover,
-.firebaseui-button:hover {
-    background-color: #00ffff !important;
-    color: #333333 !important;
-}
-
-/* Styling for links inside the widget */
-.firebaseui-link {
-    color: #00ffff !important;
-}
-
-.firebaseui-link:hover {
-    color: #00ff01 !important;
-}
-
-/* Media Queries for Mobile */
-@media (max-width: 768px) {
-    header nav {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        width: 100%;
-        text-align: center;
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.3s ease-out;
-    }
-
-    .nav-links.active {
-        max-height: 500px;
-    }
-
-    .nav-links li {
-        margin: 10px 0;
-    }
-
-    .login-links, .user-info {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        margin-top: 10px;
-    }
-
-    .hero-content {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero-text h1 {
-        font-size: 2.5em;
-    }
-
-    .hero-text h2 {
-        font-size: 1.2em;
-    }
-
-    .project-tile {
-        min-width: 100%; /* 1 item per view on mobile */
-    }
-}
-
-/* Align the buttons and center the login options */
-.firebaseui-idp-list {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 15px;
-}
-
-/* Make the Cancel and Next buttons sit side-by-side */
-.firebaseui-form-actions {
-    display: flex !important;
-    justify-content: space-around !important;
-    align-items: center !important;
-}
-
-/* Glassmorphism Effect for Login Box */
-.firebaseui-container {
-    background-color: rgba(0, 0, 0, 0.5) !important;
-    -webkit-backdrop-filter: blur(10px) ;
-    backdrop-filter: blur(10px);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-}
-
-.firebaseui-idp-list, .firebaseui-card-content, .firebaseui-card-footer {
-    background-color: transparent !important;
-    box-shadow: none !important;
-}
-
-.firebaseui-title {
-    background: none !important;
-    -webkit-text-fill-color: #ffffff !important;
-    text-fill-color: #ffffff !important;
-    -webkit-background-clip: unset !important;
-    background-clip: unset !important;
-}
-
-.firebaseui-title-text {
-    color: #ffffff !important;
-}
-
-/* --- Community Guide Page Styling --- */
-.guide-container {
-    display: flex;
+/* --- Cards (for Guides Page) --- */
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
-    padding: 50px 20px;
 }
 
-.guide-nav {
-    flex: 0 0 250px; /* Sidebar width */
-    position: sticky;
-    top: 120px;
-    height: fit-content;
+.guide-card {
+    background-color: #222;
+    border: 1px solid #444;
+    border-radius: 10px;
+    overflow: hidden;
+    color: #fff;
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
 }
 
+.guide-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 255, 1, 0.2);
+    border-color: #00ff01;
+}
+
+.guide-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    color: #00ffff;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #333;
+    color: #00ff01;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin: 0 5px 5px 0;
+}
+
+/* ==========================================================================
+   7. PAGE-SPECIFIC: GUIDE CONTENT STYLING
+   ========================================================================== */
 .guide-nav h3 {
     color: #00ffff;
     border-bottom: 1px solid #555;
@@ -565,39 +427,18 @@ footer p {
 .guide-nav ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
 .guide-nav li {
     margin: 15px 0;
 }
 
-.guide-nav a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.guide-nav a:hover {
-    color: #00ff01;
-}
-
-/* Style for the active chapter link */
 .guide-nav a.active {
     color: #00ffff;
     font-weight: bold;
 }
 
-.guide-content {
-    flex-grow: 1;
-    min-width: 0;
-}
-
-.guide-content h1 {
-    font-size: 2.5em;
-    color: #00ff01;
-}
-
+.guide-content h1 { color: #00ff01; }
 .guide-content h2 {
     color: #00ffff;
     border-bottom: 1px solid #555;
@@ -611,37 +452,43 @@ footer p {
     margin-bottom: 40px;
 }
 
-/* Styling for code blocks */
+/* --- Page-Specific: Guides Library Page --- */
+.guides-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.filter-controls {
+    text-align: center;
+    margin-bottom: 60px; /* Increased to prevent card collision on hover */
+}
+
+/* --- Text Wrapping and Overflow Solution --- */
+.guide-content p, .guide-content li {
+    overflow-wrap: break-word; /* Ensures long words in paragraphs wrap */
+    word-wrap: break-word;
+}
+
+/* This wrapper handles code block scrolling. Separation of concerns. */
+.code-block-wrapper {
+    width: 100%;
+    overflow-x: auto; /* This creates the scrollbar */
+    margin: 1.5em 0; /* Adds space around code blocks */
+}
+
+/* Simplified styling for the <pre> element itself */
 .guide-content pre {
     background-color: #222222;
     padding: 15px;
     border-radius: 5px;
     border: 1px solid #00ff01;
-    overflow-x: auto; /* For long lines of code */
-}
-
-.guide-content code {
-    font-family: 'Courier New', Courier, monospace;
-    color: #ffffff;
-}
-
-/* Media Query for mobile guide view */
-@media (max-width: 768px) {
-    .guide-container {
-        flex-direction: column;
-    }
-    .guide-nav {
-        position: static;
-        width: 100%;
-        margin-bottom: 30px;
-    }
-   
-}
-
-
-/* Style for the "Copy Code" button */
-.guide-content pre {
     position: relative;
+    white-space: pre;
+}
+
+/* Tells the code inside to be as wide as its content */
+.guide-content pre > code {
+    min-width: max-content;
 }
 
 .copy-btn {
@@ -662,7 +509,24 @@ footer p {
     opacity: 1; /* Show on hover */
 }
 
-/* Progress Bar Styling */
+/* Inline code styling */
+.guide-content p > code, .guide-content li > code {
+    background-color: #222;
+    color: #00ff01;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.guide-screenshot {
+    max-width: 600px;
+    width: 100%;
+    display: block;
+    margin: 20px auto;
+    border-radius: 5px;
+}
+
+/* Progress Bar */
 #progress-bar {
     position: fixed;
     top: 0;
@@ -674,187 +538,108 @@ footer p {
     transition: width 0.1s linear;
 }
 
-/* Custom Scrollbar for Webkit browsers (Chrome, Safari) */
-::-webkit-scrollbar {
-    width: 8px;
-}
-::-webkit-scrollbar-track {
-    background: #222;
-}
-::-webkit-scrollbar-thumb {
-    background: #00ff01;
-    border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #00ffff;
-}
+/* ==========================================================================
+   8. THIRD-PARTY OVERRIDES
+   ========================================================================== */
 
-.guide-content section {
-    scroll-margin-top: 20px; /* Adjust this value as needed */
-}
-
-/* --- Guides Library Page --- */
-.guides-header {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.guides-header h1 {
-    margin-bottom: 10px;
-}
-
-.filter-controls {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.filter-btn {
-    background: transparent;
-    border: 2px solid #555;
-    color: #ccc;
-    padding: 10px 20px;
-    margin: 5px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.filter-btn:hover {
-    border-color: #00ff01;
-    color: #00ff01;
-}
-
-.filter-btn.active {
-    background-color: #00ff01;
-    border-color: #00ff01;
-    color: #222;
-}
-
-.guide-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.guide-card {
-    background-color: #222;
-    border: 1px solid #444;
+/* --- FirebaseUI Customization --- */
+.firebaseui-container {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(10px);
     border-radius: 10px;
-    overflow: hidden;
-    text-decoration: none;
-    color: #fff;
-    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
 
-.guide-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 255, 1, 0.2);
-    border-color: #00ff01;
+.firebaseui-card-content, .firebaseui-card-footer {
+    background-color: transparent !important;
 }
 
-.guide-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    display: block;
+.firebaseui-title, .firebaseui-text {
+    color: #ffffff !important;
 }
 
-.card-content {
-    padding: 20px;
+.firebaseui-input, .firebaseui-input-invalid {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border: 1px solid #00ff01 !important;
 }
 
-.card-content h3 {
-    margin-top: 0;
-    color: #00ffff;
+.firebaseui-idp-button, .firebaseui-button {
+    border-radius: 20px !important;
+    border: 2px solid #00ff01 !important;
+    background-color: transparent !important;
+    color: #00ff01 !important;
+    transition: background-color 0.3s, color 0.3s !important;
 }
 
-.card-tags {
-    margin-top: 15px;
+.firebaseui-idp-button:hover, .firebaseui-button:hover {
+    background-color: #00ffff !important;
+    color: #333333 !important;
 }
 
-.tag {
-    display: inline-block;
-    background-color: #333;
-    color: #00ff01;
-    padding: 5px 10px;
-    border-radius: 15px;
-    font-size: 0.8em;
-    margin-right: 5px;
-    margin-bottom: 5px;
-}
-
-/* --- Additional Guide Content Styles --- */
-
-/* For links within a paragraph of text */
-.guide-content p a {
-    color: #00ffff;
-    text-decoration: underline;
-    font-weight: bold;
-}
-
-/* Blockquotes for notes, tips, or warnings */
-.guide-content blockquote {
-    background-color: #2a2a2a;
-    border-left: 4px solid #00ff01;
-    margin: 20px 0;
-    padding: 15px 20px;
-    font-style: italic;
-    color: #ccc;
-}
-
-/* Unordered and Ordered Lists */
-.guide-content ul,
-.guide-content ol {
-    padding-left: 20px;
-    margin: 20px 0;
-}
-
-.guide-content li {
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
-
-/* For inline code snippets within a paragraph */
-.guide-content p > code,
-.guide-content li > code {
-    background-color: #222;
-    color: #00ff01;
-    padding: 3px 6px;
-    border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
-}
-
-/* Horizontal Rule for section breaks */
-.guide-content hr {
-    border: 0;
-    height: 1px;
-    background-color: #555;
-    margin: 40px 0;
-}
-
-/* Ko-fi Button Styling */
-.kofi-button img {
-    height: 40px;
-    width: auto;
-}
-
-/* Make wide code blocks scrollable on their own */
-pre {
-  overflow-x: auto;
-}
-
-.guide-screenshot {
-  max-width: 600px;
-  width: 100%;
-  display: block; /* Helps with centering if needed */
-  margin: 0 auto; /* Centers the image */
-}
+.firebaseui-link { color: #00ffff !important; }
+.firebaseui-link:hover { color: #00ff01 !important; }
 
 /* --- Prism JS Override --- */
-/* This rule removes the "bubbly" background from code blocks */
+/* This rule removes the default background from highlighted code tokens */
 .guide-content .token {
-  background-color: transparent !important;
-  padding: 0 !important;
-  border: none !important;
-  border-radius: 0 !important;
+    background-color: transparent !important;
+}
+
+
+/* ==========================================================================
+   9. MEDIA QUERIES (Mobile Responsiveness)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* --- Mobile Navigation --- */
+    .menu-toggle {
+        display: block;
+    }
+
+    header nav {
+        flex-wrap: wrap; /* Allow items to wrap */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        margin: 0;
+        order: 3;
+    }
+
+    .nav-account {
+    margin-left: auto; /* Pushes the account section to the far right */
+    }
+
+    .nav-links.active {
+        max-height: 500px;
+        margin-top: 20px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    /* --- Mobile Layout --- */
+    .project-tile {
+        min-width: 100%; /* 1 item per view on mobile */
+    }
+
+    .guide-container {
+        flex-direction: flex;
+        flex-direction: column;
+    }
+
+    .guide-nav {
+        position: static;
+        width: 100%;
+        margin-bottom: 30px;
+        flex: 1 0 auto;
+    }
 }
