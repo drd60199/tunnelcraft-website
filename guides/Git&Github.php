@@ -179,5 +179,6 @@ window.addEventListener('scroll', () => {
     'floating-chat.donateButton.text-color': '#fff'
   });
 </script>
+<?php require '../includes/footer.php'; ?>
 </body>
 </html>

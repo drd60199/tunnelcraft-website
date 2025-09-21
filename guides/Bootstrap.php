@@ -16,7 +16,7 @@
 
         <main class="guide-content">
             <h1>Personal Website: Bootstrap</h1>
-            <p class="author">Damien Dennis</p>
+            <p class="author">Author: Damien Dennis</p>
 
             <section id="introduction">
                 <h2>Prerequisites</h2>
@@ -32,11 +32,16 @@
                 <h2>The Setup</h2>
                 <p>To make our life easier, it's best to start with a concrete file structure. Placing every file in your root directory will work, as Bootstrap does not enforce a specific file structure. However, implementing structure in your project will make it easier to maintain in the future and is the professional standard for development.</p>
                 <p>With that in mind, let's get to work. Like any great development project, open your command line or terminal and run:</p>
+                <div class="code-block-wrapper">
                 <pre><code class="language-bash">git init personal-website</code></pre>
+                </div>
                 <p>or:</p>
+                <div class="code-block-wrapper">
                 <pre><code class="language-bash">mkdir personal-website</code></pre>
+                </div>
                 <p>This will create a folder in your user directory called <code>personal-website</code>. Change the name if you like. The important distinction between commands here is our usage of Git. It isn't a requirement, but I highly recommend tracking all of your projects with Git. If you want to learn about Git, learn more <a href="Git&Github.php">here.</a></p>
                 <p>Navigate to your computer's file manager and open your newly created folder. Create a structure like this:</p>
+                <div class="code-block-wrapper">
                 <pre><code class="language-plaintext">
 personal-website/
 ├── index.html
@@ -45,6 +50,7 @@ personal-website/
 ├── js/  
 └── images/
     </code></pre>
+    </div>
     <p><code>Personal-website/</code> is our root directory. It is <strong>imperative</strong> that <code>index.html</code> is named specifically that. Web servers are <strong>universally</strong> configured to look for that file name as an entry point to your site. It is essentially your front door and what will be your landing page.<code>Custom.css</code> is a special CSS file we will use to supplement or override default Bootstrap styles, but we will get to that later.</p>
             </section>
 
@@ -68,6 +74,7 @@ personal-website/
                 <h2>HTML</h2>
                 <p>Now that we have found our CDN links, let's set up our HTML file. Open an IDE of your choice (I prefer VS Code) and open your <code>personal-website</code> folder. Open <code>index.html</code>.</p>
                 <p>Type the following code into your HTML file:</p>
+                <div class="code-block-wrapper">
                 <pre><code class="language-html">
 &lt;!doctype html&gt;
 &lt;html lang="en"&gt;
@@ -87,6 +94,7 @@ personal-website/
   &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
+</div>
 <p>Now that looks like a lot, so let's unpack this together.</p>
 <h3>The Doctype Declaration</h3>
 <p>The very first line, <code>&lt;!doctype html&gt;</code>, is the doctype declaration. It tells the browser that this document is an HTML5 document, which is the latest version of HTML. This ensures that the browser renders the page correctly and consistently across different browsers. Without it, the browser may render the page in unpredictable ways.</p>
@@ -102,9 +110,8 @@ personal-website/
 </ul>
 <h3>The Body Section</h3>
     <p>The <code>&lt;body&gt;</code> section contains the content that is displayed on the webpage. What you are currently reading is part of this page's body content.</p>
-<ul>
-    <li>The <code>&lt;script&gt;</code> section includes the Bootstrap JavaScript file. The <code>src</code> attribute specifies the path to the JS file. This script is responsible for enabling Bootstrap's interactive components, such as modals, dropdowns, and carousels. An important note here, is that it should be put directly above <code>&lt;/body&gt;</code>. We do this so the browser can load and display all the visible page content and styles first, making the website feel much faster for the user.</li>
-</ul>
+    <p>The <code>&lt;script&gt;</code> section includes the Bootstrap JavaScript file. The <code>src</code> attribute specifies the path to the JS file. This script is responsible for enabling Bootstrap's interactive components, such as modals, dropdowns, and carousels. An important note here, is that it should be put directly above <code>&lt;/body&gt;</code>. We do this so the browser can load and display all the visible page content and styles first, making the website feel much faster for the user.</p>
+
 <p>You've probably noticed that most HTML tags come in pairs, like <code>&lt;body&gt;&lt;/body&gt;</code>. The first part, <code>&lt;body&gt;</code>, is the <strong>opening tag</strong>, and the second part with a forward slash, <code>&lt;/body&gt;</code>, is the <strong>closing tag</strong>.</p>
 <p>A great way to think about this is like a box with a lid. The opening tag is the box, the closing tag is the lid, and you place your content between them.</p>
 <p>However, some tags like <code>&lt;meta&gt;</code> don't have a closing tag. That's because they don't hold any content. They <strong>are</strong> the content. Using our analogy, they aren't a box; they're more like a solid brick. Since they can't contain anything, they don't need a lid. In HTML, these are called <strong>void elements.</strong></p>
@@ -113,6 +120,7 @@ personal-website/
 <p>Bootstrap is famous for its pre-styled components like navbars and buttons, but the foundational technology that makes everything possible is Bootstrap's <strong>responsive grid system</strong></p>
 <p>To start, go ahead and remove the existing <code>&lt;h1&gt;&lt;/h1&gt;</code> along with the content in between the tags. We are going to use Bootstrap's grid system to create a two-column "About-Me" section and use Bootstrap's JavaScript to create a modal that will allow viewers to get more details about you and download your resume.</p>
 <p>Let's put together the basic structure of our webpage using Bootstrap's grid system. Replace the removed <code>&lt;h1&gt;&lt;/h1&gt;</code> tags with the following code:</p>
+<div class="code-block-wrapper">
 <pre><code class="language-html">
     &lt;div id="about-section" class="container mt-5"&gt;
       &lt;div class="row align-items-center"&gt;
@@ -132,6 +140,7 @@ personal-website/
 
       &lt;/div&gt;
     &lt;/div&gt;</code></pre>
+    </div>
 
 <p>Let's break down what each part of this code does:</p>
 <ul>
@@ -175,6 +184,7 @@ personal-website/
 <p>Now that we have the responsive grid in place, your website page should look like this:</p>
 <img src="../assets/images/screenshot_1.png" alt="..." class="img-fluid rounded mb-3 guide-screenshot">
 <p>Next, we need to add the modal that will display your resume when the button is clicked. Add the following code directly above the JavaScript <code>&lt;script&gt;</code> tag:</p>
+<div class="code-block-wrapper">
 <pre><code class="language-html">
     &lt;div class="modal fade" id="resumeModal" tabindex="-1" aria-labelledby="resumeModalLabel" aria-hidden="true"&gt;
       &lt;div class="modal-dialog"&gt;
@@ -195,6 +205,7 @@ personal-website/
         &lt;/div&gt;
       &lt;/div&gt;
     &lt;/div&gt;</code></pre>
+    </div>
 
 <p>At this point, we have a good understanding of basic HTML tags (div, a, h1, etc). But you may be confused by the structure of this modal element. Let me explain.</p>
 <p>Think of a modal as a picture frame, and the rest of your HTML is the wall.</p>
@@ -214,18 +225,22 @@ personal-website/
                 <h2>Custom CSS</h2>
                 <p>Bootstrap provides a solid foundation for responsive design. This HTML foundation we have built will work seamlessly across all device sizes and browser types. However, it has a very distinct "Bootstrap" look. To make your website truly your own, you can add custom CSS to override or supplement Bootstrap's default styles.</p>
                 <p>Before we start working on our custom CSS, the first task we need to complete is linking the <code>custom.css</code> to the <code>index.html</code> file. In your <code>&lt;head&gt;</code> section, directly below your Bootstrap CSS link, add this line of HTML:</p>
+                <div class="code-block-wrapper">
                 <pre><code class="language-html">
                   &lt;link href="css/custom.css" rel="stylesheet"&gt;
-                </code></pre>   
+                </code></pre>  
+                </div> 
                 
                 <p>CSS is notoriously easy to grasp, but difficult to master.</p>
                 <p>Basic CSS syntax like this:</p>
+                <div class="code-block-wrapper">
                 <pre><code class="language-css">
 selector {
   property: value;
   border-color: value;
 }
 </code></pre>
+</div>
 <ul>
 <li>This entire snippet is called a <b>CSS rule</b>.In a simple sense, CSS is just a long list of rules.</li>
 <li>The <b>selector</b> is the HTML element you want to style. It can be a tag name (like <code>body</code>), a class (like <code>.btn</code>), or an ID (like <code>#header</code>).</li>
@@ -237,6 +252,7 @@ selector {
 <p>The first and possibly the most important system to understand in order to truly master CSS is called <b>Specificity</b>. As your CSS grows in complexity, you will tend to run into conflicts.</p>
 <p>For example, if you have two rules that apply to the same element, the one with higher specificity will take precedence. Specificity is calculated based on the types of selectors used in the rule.</p>
 <p>With rule specificity in mind, let's add our custom CSS:</p>
+<div class="code-block-wrapper">
 <pre><code class="language-css">
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
@@ -262,12 +278,13 @@ body {
   transform: scale(1.03);
 }
 </code></pre>
+</div>
 <p>In this CSS, we're accomplishing two main goals, First, we are customizing a default Bootstrap component. The recommended way to change the color of a Bootstrap button is to override its CSS variables. By setting <code>--bs-btn-bg</code> and the other <code>--bs-btn-*</code> variables, we can change the button's appearance in a way the framework intended, ensuring all states like hover and active work correctly with our new color.</p>
 <p>Second, we're creating a completely new custom effect. While Bootstrap has basic shadow classes like <code>.shadow</code>, you might want more control. By creating our own class (<code>.profile-image-shadow</code>), we can define a unique <code>box-shadow</code> and a special hover effect. We use the parent ID (<code>#about-section</code>) in the selector to make our rule highly specific, ensuring it applies exactly where we want without conflicting with other styles.</p>
 <p>Finally, an important note regarding selectors:</p>
 <ul>
-<li>Class selectors use a period (<code>.</code>) before the class name, like <code>.btn</code>.</li>
-<li>ID selectors use a hash (<code>#</code>) before the ID name, like <code>#about-section</code>.</li>
+<li>Class selectors use a period (<code>.</code>) before the class name, like <code>.btn</code>. These selectors are <b>reusable</b>. They can appear many times in a single CSS file.</li>
+<li>ID selectors use a hash (<code>#</code>) before the ID name, like <code>#about-section</code>. These selectors are completely <b>unique</b>. They can only appear once to identify a single element.</li>
 </ul>
 <p>Notice there are profile image rules that will add some flair to whatever image you decide to link to your webpage. You wont see these changes until an image is added. This is accomplished similarly to how we linked a resume to our HTML.</p>
 <ol>
@@ -280,7 +297,7 @@ body {
                 <p>If you test your page and your custom styles aren't showing up, it's usually for one of two reasons:</p>
                 <ol>
                     <li><strong>The stylesheet isn't linked correctly.</strong> Make sure you have added <code>&lt;link href="css/custom.css" rel="stylesheet"&gt;</code> to your HTML file's <code>&lt;head&gt;</code>, and that it comes <b>after</b> the Bootstrap CSS link.</li>
-                    <li><strong>Bootstrap's rules are more specific.</strong> CSS rules are applied based on specificity. To ensure your rule wins, you can make your selector more specific. That's why we added an <code>id="about-section"</code> to our HTML and used it in our CSS selectors (e.g., <code>#about-section .btn.btn-primary</code>). An ID gives your selector higher priority.</li>
+                    <li><strong>Bootstrap's rules are more specific.</strong> CSS rules are applied based on specificity. To ensure your rule wins, you can make your selector more specific. That's why we added an <code>id="about-section"</code> to our HTML and used it in our CSS selectors (e.g., <code>#about-section .profile-image-shadow</code>). An ID gives your selector higher priority.</li>
                 </ol>
 
 <section id="conclusion">
@@ -346,6 +363,8 @@ window.addEventListener('scroll', () => {
     'floating-chat.donateButton.text-color': '#fff'
   });
 </script>
+
+<?php require '../includes/footer.php'; ?>
 
 </body>
 </html>
