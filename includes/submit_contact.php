@@ -81,6 +81,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $titleMessage = "Invalid Request";
         $bodyMessage = "There was an issue with your form submission. Please go back and try again.";
     } else {
+        // Turnstile verification
+        $turnstileResponse = $_POST['cf-turnstile-response'] ?? '';
+        $remoteIp = $_SERVER['REMOTE_ADDR'];
+
+        //Cloudflare Turnstile API endpoint
+        $url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+        $data = [
+            'secret' => TURNSTILE_SECRET_KEY,
+            'response' => $turnstileResponse,
+            'remoteip' => $remoteIp
+        ];
+        $options = [
+            'http' => [
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data),
+            ],
+        ];
+
+        $context  = stream_context_create($options);
+        $verify = file_get_contents($url, false, $context);
+        $captcha_success = json_decode($verify);
+
+        if ($captcha_success->success !== true) {
+            $titleMessage = "Verification Failed";
+            $bodyMessage = "Please complete the CAPTCHA verification to submit the form.";
+        } else {
+
         // CSRF token is valid, so unset it to prevent reuse
         unset($_SESSION['csrf_token']);
 
@@ -158,6 +186,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
+}
+        
+    
 } else {
     // Handle cases where the page is accessed directly via GET request
     $titleMessage = "Access Denied";
